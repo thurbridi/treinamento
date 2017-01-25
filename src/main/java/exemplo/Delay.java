@@ -1,4 +1,4 @@
-package main;
+package exemplo;
 
 public class Delay {
 
