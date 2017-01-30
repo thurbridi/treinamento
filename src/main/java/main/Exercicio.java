@@ -12,4 +12,6 @@ public interface Exercicio {
 
 	public List<String> getUrls(BuscaConfig config);
 
+	public String getWikiResume(String termo);
+
 }

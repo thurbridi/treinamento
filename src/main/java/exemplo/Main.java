@@ -11,8 +11,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		String string = Main.class.getResource("/chromedriver.exe").getPath();
-		System.setProperty("webdriver.chrome.driver", string);
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--start-maximized");
 		WebDriver webdriver = new ChromeDriver(options);

@@ -30,8 +30,7 @@ public class ExercicioExemplo implements Exercicio {
 		long result = 0;
 
 		try {
-			String string = Main.class.getResource("/chromedriver.exe").getPath();
-			System.setProperty("webdriver.chrome.driver", string);
+			System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--start-maximized");
 			webdriver = new ChromeDriver(options);
@@ -56,6 +55,10 @@ public class ExercicioExemplo implements Exercicio {
 				e.printStackTrace();
 			}
 
+		} catch (Throwable t) {
+
+			t.printStackTrace();
+
 		} finally {
 			webdriver.close();
 			webdriver.quit();
@@ -75,6 +78,11 @@ public class ExercicioExemplo implements Exercicio {
 	}
 
 	public List<String> getUrls(BuscaConfig config) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getWikiResume(String termo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
