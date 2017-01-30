@@ -1,4 +1,4 @@
-package exemplo;
+package agostinho;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -13,6 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import main.BuscaConfig;
+import main.Delay;
 import main.Exercicio;
 
 public class ExercicioExemplo implements Exercicio {
