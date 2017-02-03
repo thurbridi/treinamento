@@ -10,7 +10,15 @@ public class ExecutionController {
 
 	public static void execute(Executor executor) {
 
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		String soName = System.getProperty("os.name");
+		String pathChromeDriver = "";
+		if (soName.equals("Linux")) {
+			pathChromeDriver = "chromedriverlinux";
+		} else {
+			pathChromeDriver = "chromedriver.exe";
+		}
+
+		System.setProperty("webdriver.chrome.driver", pathChromeDriver);
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--start-maximized");
 		WebDriver webdriver = new ChromeDriver(options);
