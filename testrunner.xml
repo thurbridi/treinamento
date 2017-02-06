@@ -1,0 +1,4 @@
+ <config> 
+	<webdriver>agostinho.teste.ChromeDriverManager</webdriver>
+	<log>false</log>
+ </config> 
