@@ -23,9 +23,8 @@ public class WikiStep {
 		WebDriverWait wait = new WebDriverWait(webdriver, 5);
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(WikiPag.inputSearch())).sendKeys(termSeach);
+		String url = webdriver.getCurrentUrl();
 		webdriver.findElement(WikiPag.inputSearchSubmit()).click();
-
-		DocumentReady.max(5);
 
 	}
 

@@ -24,4 +24,18 @@ public class DocumentReady {
 		});
 	}
 
+	/**
+	 * Aguarda a mudança da url.
+	 */
+	public static void mudancaUrl(final String urlAtual) {
+		final WebDriver driver = WebDriverRunner.getWebDriver();
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+
+		wait.until(new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver wdriver) {
+				return !wdriver.getCurrentUrl().equals(urlAtual);
+			}
+		});
+	}
+
 }
