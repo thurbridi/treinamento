@@ -3,7 +3,8 @@ package exercise;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
-import org.openqa.selenium.WebDriver;
+import org.junit.runner.RunWith;
+import core.WebDriverRunner;
 
 /**
  * A partir da página https://en.wikipedia.org/wiki/Main_Page,
@@ -11,6 +12,8 @@ import org.openqa.selenium.WebDriver;
  * 2. navegar até o artigo com a linguagem definida.
  * 3. Imprimir todas as urls dos links que aparecem nas referências do artigo.
  */
+
+@RunWith(WebDriverRunner.class)
 public class Exercicio3 {
 
 	@Rule

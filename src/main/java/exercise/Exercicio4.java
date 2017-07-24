@@ -3,7 +3,8 @@ package exercise;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
-import org.openqa.selenium.WebDriver;
+import org.junit.runner.RunWith;
+import core.WebDriverRunner;
 
 /**
  * * A partir da página https://en.wikipedia.org/wiki/Main_Page,
@@ -12,6 +13,8 @@ import org.openqa.selenium.WebDriver;
  * 3. entrar no histórico de revisões do artigo.
  * 2. imprimir o nome dos contribuidores que modificaram o artigo no período definido.
  */
+
+@RunWith(WebDriverRunner.class)
 public class Exercicio4 {
 
 	@Rule
