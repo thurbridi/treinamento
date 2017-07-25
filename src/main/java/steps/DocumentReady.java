@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import core.WebDriverRunner;
+import core.WebDriverManager;
 
 public class DocumentReady {
 
@@ -14,7 +14,7 @@ public class DocumentReady {
 	 */
 	public static void max(int sec) {
 
-		final WebDriver driver = WebDriverRunner.getWebDriver();
+		final WebDriver driver = WebDriverManager.getWebDriver();
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 
 		wait.until(new ExpectedCondition<Boolean>() {
@@ -28,7 +28,7 @@ public class DocumentReady {
 	 * Aguarda a mudança da url.
 	 */
 	public static void mudancaUrl(final String urlAtual) {
-		final WebDriver driver = WebDriverRunner.getWebDriver();
+		final WebDriver driver = WebDriverManager.getWebDriver();
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 
 		wait.until(new ExpectedCondition<Boolean>() {

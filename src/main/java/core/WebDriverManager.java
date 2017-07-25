@@ -8,9 +8,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class WebDriverCreator {
+public class WebDriverManager {
 
-	public static WebDriver create() {
+	private static WebDriver webdriver;
+
+	public static WebDriver getWebDriver() {
+		if (webdriver == null) {
+			throw new RuntimeException("WebDriver não iniciado.");
+		}
+
+		return webdriver;
+	}
+
+	protected static WebDriver create() {
 
 		String file = "/chromedriver.exe";
 		if (System.getProperty("os.name").equals("Linux")) {
@@ -37,4 +47,11 @@ public class WebDriverCreator {
 		return webdriver;
 
 	}
+
+	protected static void close() {
+		webdriver.close();
+		webdriver.quit();
+		webdriver = null;
+	}
+
 }

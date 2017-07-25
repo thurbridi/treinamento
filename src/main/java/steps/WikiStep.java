@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import core.WebDriverRunner;
+import core.WebDriverManager;
 import pageobject.WikiPag;
 
 /**
@@ -19,7 +19,7 @@ public class WikiStep {
 	 */
 	public static void search(String termSeach) {
 
-		WebDriver webdriver = WebDriverRunner.getWebDriver();
+		WebDriver webdriver = WebDriverManager.getWebDriver();
 		WebDriverWait wait = new WebDriverWait(webdriver, 5);
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(WikiPag.inputSearch())).sendKeys(termSeach);
@@ -33,7 +33,7 @@ public class WikiStep {
 	 */
 	public static String getPageHeader() {
 
-		WebDriver webdriver = WebDriverRunner.getWebDriver();
+		WebDriver webdriver = WebDriverManager.getWebDriver();
 		return webdriver.findElement(WikiPag.titlePage()).getText();
 
 	}

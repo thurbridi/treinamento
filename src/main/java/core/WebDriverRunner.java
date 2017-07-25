@@ -4,7 +4,6 @@ import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
-import org.openqa.selenium.WebDriver;
 
 /**
  * Runner do JUnit criado com o propósito de controlar o ciclo de vida do browser a cada teste.
@@ -12,16 +11,6 @@ import org.openqa.selenium.WebDriver;
  */
 
 public class WebDriverRunner extends BlockJUnit4ClassRunner {
-
-	private static WebDriver webdriver;
-
-	public static WebDriver getWebDriver() {
-		if (webdriver == null) {
-			throw new RuntimeException("WebDriver não iniciado.");
-		}
-
-		return webdriver;
-	}
 
 	public WebDriverRunner(Class<?> klass) throws InitializationError {
 		super(klass);
@@ -42,14 +31,14 @@ public class WebDriverRunner extends BlockJUnit4ClassRunner {
 
 	private void beforeTest() {
 
-		WebDriverRunner.webdriver = WebDriverCreator.create();
+		WebDriverManager.create();
 
 	}
 
 	private void afterTest() {
-		WebDriverRunner.webdriver.close();
-		WebDriverRunner.webdriver.quit();
-		WebDriverRunner.webdriver = null;
+
+		WebDriverManager.close();
+
 	}
 
 }

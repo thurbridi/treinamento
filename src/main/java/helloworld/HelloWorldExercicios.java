@@ -7,6 +7,7 @@ import org.junit.rules.ErrorCollector;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
+import core.WebDriverManager;
 import core.WebDriverRunner;
 import steps.WikiStep;
 
@@ -19,7 +20,7 @@ public class HelloWorldExercicios {
 	@Test
 	public void run() {
 
-		WebDriver webdriver = WebDriverRunner.getWebDriver();
+		WebDriver webdriver = WebDriverManager.getWebDriver();
 		webdriver.get("https://en.wikipedia.org/wiki/Main_Page");
 		WikiStep.search("metallica");
 
