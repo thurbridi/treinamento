@@ -40,7 +40,7 @@ public class WebDriverManager {
 		options.setExperimentalOption("prefs", preferences);
 		preferences.put("plugins.always_open_pdf_externally", Boolean.TRUE);
 
-		WebDriver webdriver = new ChromeDriver(options);
+		webdriver = new ChromeDriver(options);
 		webdriver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
 		webdriver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 
