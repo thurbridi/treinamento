@@ -1,5 +1,7 @@
 package exercise;
 
+import java.util.List;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
@@ -34,6 +36,11 @@ public class Exercicio3 {
 		WikiStep.search(termo);
 
 		WikiStep.selectLanguageByEnglishLanguage(linguagem);
+
+		List<String> urlReferences = WikiStep.getUrlReferences();
+		for (String url : urlReferences) {
+			System.out.println(url);
+		}
 
 	}
 

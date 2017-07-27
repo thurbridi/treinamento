@@ -46,4 +46,8 @@ public class WikiPag {
 		return By.xpath("//li[@data-mw-revid > " + start + " and @data-mw-revid < " + end + "]");
 	}
 
+	public static By linkReferences() {
+		return By.xpath("//ol[@class='references']//a");
+	}
+
 }

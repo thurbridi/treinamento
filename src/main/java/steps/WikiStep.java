@@ -99,4 +99,14 @@ public class WikiStep {
 		return revision.findElement(By.xpath(".//bdi")).getText();
 	}
 
+	public static List<String> getUrlReferences() {
+		List<WebElement> linkReferences = WebDriverManager.waitVisibleElements(WikiPag.linkReferences());
+		List<String> urlReferences = new LinkedList<String>();
+		for (WebElement we : linkReferences) {
+			urlReferences.add(we.getAttribute("href"));
+		}
+
+		return urlReferences;
+	}
+
 }
