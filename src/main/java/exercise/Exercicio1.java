@@ -1,10 +1,14 @@
 package exercise;
 
+import java.util.List;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
 import org.junit.runner.RunWith;
-
+import pageobject.WikiPag;
+import steps.WikiStep;
+import core.WebDriverManager;
 import core.WebDriverRunner;
 
 /**
@@ -19,7 +23,13 @@ public class Exercicio1 {
 
 	@Test
 	public void run() {
-		// TODO Auto-generated method stub
+
+		WebDriverManager.acessar(WikiPag.url);
+
+		List<String> peopleRecentDeaths = WikiStep.getPeopleRecentDeaths();
+		for (String person : peopleRecentDeaths) {
+			System.out.println(person);
+		}
 
 	}
 

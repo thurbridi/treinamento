@@ -1,6 +1,11 @@
 package steps;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -23,7 +28,6 @@ public class WikiStep {
 		WebDriverWait wait = new WebDriverWait(webdriver, 5);
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(WikiPag.inputSearch())).sendKeys(termSeach);
-		String url = webdriver.getCurrentUrl();
 		webdriver.findElement(WikiPag.inputSearchSubmit()).click();
 
 	}
@@ -36,6 +40,63 @@ public class WikiStep {
 		WebDriver webdriver = WebDriverManager.getWebDriver();
 		return webdriver.findElement(WikiPag.titlePage()).getText();
 
+	}
+
+	public static List<String> getPeopleRecentDeaths() {
+
+		return WebDriverManager.getTextOfVisibleElementsWith(WikiPag.linksRecentDeaths());
+
+	}
+
+	public static List<String> getArticleLanguages() {
+
+		return WebDriverManager.getTextOfVisibleElementsWith(WikiPag.linksLanguage());
+
+	}
+
+	public static List<String> getEnglishArticleLanguages() {
+
+		LinkedList<String> lista = new LinkedList<String>();
+
+		List<WebElement> visibleElements = WebDriverManager.waitVisibleElements(WikiPag.linksLanguage());
+		for (WebElement we : visibleElements) {
+			lista.add(getEnglishLanguage(we));
+		}
+
+		return lista;
+
+	}
+
+	private static String getEnglishLanguage(WebElement linkLanguageElement) {
+		return linkLanguageElement.getAttribute("title").split("–")[1].trim();
+	}
+
+	public static void selectLanguageByEnglishLanguage(String englishLanguage) {
+
+		List<WebElement> languageElements = WebDriverManager.waitVisibleElements(WikiPag.linksLanguage());
+		for (WebElement e : languageElements) {
+			if (getEnglishLanguage(e).equals(englishLanguage)) {
+				e.click();
+				break;
+			}
+		}
+
+	}
+
+	public static boolean existsLanguage(String lang) {
+		return !WebDriverManager.getWebDriver().findElements(WikiPag.linkLanguage(lang)).isEmpty();
+	}
+
+	public static void clickHistoryRevision() {
+		WebDriverManager.waitVisibleElement(WikiPag.linkHistoryRevisions()).click();
+	}
+
+	public static List<WebElement> getPageRevisions(long start, long end) {
+		return WebDriverManager.waitVisibleElements(WikiPag.revisionRegisters(start, end));
+	}
+
+	public static String getRevisionAuthor(WebElement revision) {
+		return revision.findElement(By.xpath(".//bdi")).getText();
 	}
 
 }

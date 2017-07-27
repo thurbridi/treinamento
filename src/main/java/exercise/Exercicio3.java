@@ -4,6 +4,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
 import org.junit.runner.RunWith;
+
+import pageobject.WikiPag;
+import steps.WikiStep;
+import core.WebDriverManager;
 import core.WebDriverRunner;
 
 /**
@@ -24,7 +28,12 @@ public class Exercicio3 {
 
 	@Test
 	public void run() {
-		// TODO Auto-generated method stub
+
+		WebDriverManager.acessar(WikiPag.url);
+
+		WikiStep.search(termo);
+
+		WikiStep.selectLanguageByEnglishLanguage(linguagem);
 
 	}
 

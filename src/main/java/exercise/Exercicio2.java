@@ -1,9 +1,15 @@
 package exercise;
 
+import java.util.List;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
 import org.junit.runner.RunWith;
+
+import pageobject.WikiPag;
+import steps.WikiStep;
+import core.WebDriverManager;
 import core.WebDriverRunner;
 
 /**
@@ -22,7 +28,15 @@ public class Exercicio2 {
 
 	@Test
 	public void run() {
-		// TODO Auto-generated method stub
+
+		WebDriverManager.acessar(WikiPag.url);
+
+		WikiStep.search(termo);
+
+		List<String> articleLanguages = WikiStep.getEnglishArticleLanguages();
+		for (String lang : articleLanguages) {
+			System.out.println(lang);
+		}
 
 	}
 

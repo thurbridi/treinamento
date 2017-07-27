@@ -1,12 +1,18 @@
 package core;
 
 import java.util.Hashtable;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebDriverManager {
 
@@ -18,6 +24,38 @@ public class WebDriverManager {
 		}
 
 		return webdriver;
+	}
+
+	public static void acessar(String url) {
+		getWebDriver().get(url);
+	}
+
+	public static WebDriverWait getWebDriverWait() {
+		WebDriver webdriver = WebDriverManager.getWebDriver();
+		return new WebDriverWait(webdriver, 10);
+	}
+
+	public static WebElement waitVisibleElement(By locator) {
+		WebDriverWait wait = getWebDriverWait();
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+
+	public static List<WebElement> waitVisibleElements(By locator) {
+		WebDriverWait wait = getWebDriverWait();
+		return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+	}
+
+	public static List<String> getTextOfVisibleElementsWith(By locator) {
+
+		LinkedList<String> lista = new LinkedList<String>();
+
+		List<WebElement> visibleElements = WebDriverManager.waitVisibleElements(locator);
+		for (WebElement we : visibleElements) {
+			lista.add(we.getText());
+		}
+
+		return lista;
+
 	}
 
 	protected static WebDriver create() {
