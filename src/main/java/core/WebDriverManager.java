@@ -7,10 +7,12 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -56,6 +58,18 @@ public class WebDriverManager {
 
 		return lista;
 
+	}
+
+	public static void moveMouseTo(By by) {
+		WebDriver wd = getWebDriver();
+		Actions builder = new Actions(wd);
+		WebElement visibleElement = waitVisibleElement(by);
+		builder.moveToElement(visibleElement).build().perform();
+	}
+
+	public static void scroolTo(WebElement element) {
+		WebDriver wd = getWebDriver();
+		((JavascriptExecutor) wd).executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 
 	protected static WebDriver create() {
