@@ -25,30 +25,50 @@ public class PriceRange {
 
 	}
 
-	public static void moveLeftRangeUntil(float left) {
+	public static void moveLeftRangeUntil(float threshold) {
 
 		WebElement leftPriceRange = WebDriverManager.waitVisibleElement(CatalogPag.byLeftPriceRange());
 		clickAndHold(leftPriceRange);
-		float[] range = getRange();
-		while (range[0] < left) {
-			moveHorizontalMouse(2);
-			Delay.of(20);
-			range = getRange();
+		float left = getRange()[0];
+		
+		if (left <= threshold) {
+			while (left < threshold) {
+				moveHorizontalMouse(2);
+				Delay.of(20);
+				left = getRange()[0];
+			}			
+		} else {
+			while (left > threshold) {
+				moveHorizontalMouse(-2);
+				Delay.of(20);
+				left = getRange()[0];
+			}			
 		}
+
 		release();
 
 	}
 
-	public static void moveRightRangeUntil(float right) {
+	public static void moveRightRangeUntil(float threshold) {
 
 		WebElement rightPriceRange = WebDriverManager.waitVisibleElement(CatalogPag.byRightPriceRange());
 		clickAndHold(rightPriceRange);
-		float[] range = getRange();
-		while (range[1] > right) {
-			moveHorizontalMouse(-2);
-			Delay.of(20);
-			range = getRange();
+		float right = getRange()[1];
+		
+		if (right >= threshold) {
+			while (right > threshold) {
+				moveHorizontalMouse(-2);
+				Delay.of(20);
+				right = getRange()[1];
+			}
+		} else {
+			while (right < threshold) {
+				moveHorizontalMouse(2);
+				Delay.of(20);
+				right = getRange()[1];
+			}			
 		}
+
 		release();
 
 	}

@@ -36,12 +36,12 @@ public class CatalogPag {
 		return By.xpath("//form[@class='compare-form']");
 	}
 	
-	public static WebElement FormCompare(int index) {
+	public static WebElement formCompare(int index) {
 		return WebDriverManager.getWebDriver().findElements(byFormCompare()).get(index);
 	}
 	
-	public static String FormCompareCountValue(int index) {
-		WebElement compare = FormCompare(index);
+	public static String formCompareCountValue(int index) {
+		WebElement compare = formCompare(index);
 		return compare.findElement(By.name("compare_product_count")).getAttribute("value");
 	}
 	

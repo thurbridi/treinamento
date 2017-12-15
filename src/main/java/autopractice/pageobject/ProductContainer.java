@@ -1,6 +1,7 @@
 package autopractice.pageobject;
 
 import org.openqa.selenium.By;
+import core.WebDriverManager;
 
 public class ProductContainer {
 
@@ -56,8 +57,11 @@ public class ProductContainer {
 	}
 
 	public By byButtonAddToCompare() {
-		String xpath = this.rightBlock + "//a[@class='add_to_compare']";
+		String xpath = this.rightBlock + "//a[contains(@class, 'add_to_compare')]";
 		return By.xpath(xpath);
 	}
-
+	
+	public String productId() {
+		return WebDriverManager.getWebDriver().findElement(byButtonAddToCart()).getAttribute("data-id-product");
+	}
 }

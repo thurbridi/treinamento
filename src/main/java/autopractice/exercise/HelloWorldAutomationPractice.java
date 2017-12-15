@@ -33,18 +33,23 @@ public class HelloWorldAutomationPractice {
 
 		WebDriverManager.waitVisibleElement(ProductList.liList()).click();
 
-		Float v1 = 19.52f;
-		Float v2 = 29.44f;
+		Float v1 = 20f;
+		Float v2 = 25f;
+		PriceRange.rangeBetween(v1, v2);
+		Delay.of(1500);
+		
+		v1 = 15f;
+		v2 = 32f;
 		PriceRange.rangeBetween(v1, v2);
 		Delay.of(1500);
 
-		List<ProductDto> allPresentProducts = ProductParser.parseAllPresentProducts();
+//		List<ProductDto> allPresentProducts = ProductParser.parseAllPresentProducts();
+//
+//		for (ProductDto product : allPresentProducts) {
+//			System.out.println(product.getName() + " : " + product.getPrice());
+//		}
 
-		for (ProductDto product : allPresentProducts) {
-			System.out.println(product.getName() + " : " + product.getPrice());
-		}
-
-		Delay.of(3000);
+//		Delay.of(3000);
 	}
 
 }

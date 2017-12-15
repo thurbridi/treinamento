@@ -74,5 +74,5 @@ public class AutomationPracticeExercise01 {
 		}
 		
 		Delay.of(5000);
-	}	
+	}
 }
